@@ -9,6 +9,14 @@
         => response
     -->
 
+    <!-- 全局配置文件 -->
+    <!-- classpath: 只会到项目的class路径中寻找 -->
+    <!-- classpath*: 除了项目的class路径，还会去jar包中的class路径寻找 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/spring/spring.xml</param-value>
+    </context-param>
+
     <!--
         servlet小型服务程序，通常一个web由多个servlet组成
         1. 所有匹配url-pattern的url都交由servlet-class处理
@@ -18,16 +26,17 @@
         <servlet-name>piper-dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!--
-            前端控制器的加载路径
+            servlet的配置文件
             1. 默认是/WEB-INF/xxx-servlet.xml文件
             2. 可以通过下列方式修改为其他路径
                 如果文件放在web目录下，可以通过/xxx/xxx/xxx.xml引用
                 如果文件放在src目录下，可以通过classpath:xxx.xml引用
          -->
-        <init-param>
-            <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:/spring/spring.xml</param-value>
-        </init-param>
+        <!-- <init-param>-->
+        <!--     <param-name>contextConfigLocation</param-name>-->
+        <!--     <param-value>classpath:/spring/spring.xml</param-value>-->
+        <!-- </init-param>-->
+
         <!-- 通过load-on-startup配置servlet创建优先级 -->
         <load-on-startup>1</load-on-startup>
     </servlet>
